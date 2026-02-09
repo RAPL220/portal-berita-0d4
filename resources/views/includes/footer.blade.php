@@ -51,7 +51,7 @@
                 </h3>
                 <ul class="footer-links">
                     @foreach (\App\Models\Categories::take(6)->get() as $category)
-                        <li><a href="#">{{ $category->title }}</a></li>
+                        <li><a href="{{ route('news.category', $category->slug) }}">{{ $category->title }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -150,12 +150,15 @@
 
 <style>
     :root {
-        --primary-red: #E63946;
-        --primary-red-dark: #D62828;
-        --dark-bg: #1D3557;
-        --text-dark: #14213D;
-        --text-gray: #6C757D;
-        --bg-light: #F1FAEE;
+        --primary-blue: #06B6D4;
+        --primary-blue-dark: #0891B2;
+        --primary-blue-light: #22D3EE;
+        --accent-blue: #67E8F9;
+        --dark-bg: #0F172A;
+        --text-dark: #1E293B;
+        --text-gray: #64748B;
+        --bg-light: #F8FAFC;
+        --border-light: #E2E8F0;
     }
 
     /* Footer Main Container */
@@ -166,10 +169,10 @@
         position: relative;
     }
 
-    /* Top Red Bar */
+    /* Top Blue Bar */
     .footer-top-bar {
         height: 6px;
-        background: var(--primary-red);
+        background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-blue-light) 50%, var(--accent-blue) 100%);
         width: 100%;
     }
 
@@ -205,12 +208,16 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.3);
+        transition: all 0.3s ease;
+        border-radius: 4px;
+        border: 2px solid transparent;
     }
 
     .logo-wrapper:hover {
         transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(6, 182, 212, 0.5);
+        border-color: var(--primary-blue);
     }
 
     #logo_footer {
@@ -244,13 +251,34 @@
         text-decoration: none;
         transition: all 0.3s ease;
         border: 2px solid transparent;
+        border-radius: 6px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .social-link::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--primary-blue);
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .social-link svg {
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease;
+    }
+
+    .social-link:hover::before {
+        transform: translateY(0);
     }
 
     .social-link:hover {
-        background: var(--primary-red);
-        border-color: var(--primary-red);
+        border-color: var(--primary-blue);
         transform: translateY(-4px);
-        box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
     }
 
     /* Footer Sections */
@@ -270,13 +298,15 @@
     .heading-number {
         width: 32px;
         height: 32px;
-        background: var(--primary-red);
+        background: var(--primary-blue);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 0.85rem;
         font-weight: 900;
         flex-shrink: 0;
+        border-radius: 4px;
+        box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
     }
 
     .footer-links {
@@ -308,17 +338,18 @@
         transform: translateY(-50%);
         width: 0;
         height: 2px;
-        background: var(--primary-red);
+        background: var(--primary-blue);
         transition: width 0.3s ease;
+        border-radius: 2px;
     }
 
     .footer-links a:hover {
-        color: var(--primary-red);
+        color: var(--primary-blue);
         padding-left: 1.5rem;
     }
 
     .footer-links a:hover::before {
-        width: 8px;
+        width: 10px;
     }
 
     /* Footer Contact */
@@ -329,6 +360,7 @@
         color: #94A3B8;
         font-weight: 600;
         padding-left: 0 !important;
+        margin-bottom: 1rem;
     }
 
     .footer-contact a {
@@ -340,19 +372,38 @@
     }
 
     .contact-icon-wrapper {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         background: var(--dark-bg);
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        border-radius: 6px;
+        border: 2px solid rgba(6, 182, 212, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .footer-contact li:hover .contact-icon-wrapper {
+        background: var(--primary-blue);
+        border-color: var(--primary-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
     }
 
     .contact-icon {
         width: 16px;
         height: 16px;
-        color: var(--primary-red);
+        color: var(--primary-blue);
+        transition: color 0.3s ease;
+    }
+
+    .footer-contact li:hover .contact-icon {
+        color: white;
+    }
+
+    .footer-contact li:hover span {
+        color: var(--primary-blue);
     }
 
     /* Newsletter Section */
@@ -360,8 +411,22 @@
         background: var(--dark-bg);
         padding: 2.5rem;
         margin-bottom: 3rem;
-        border-left: 6px solid var(--primary-red);
+        border-left: 6px solid var(--primary-blue);
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .newsletter-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+        pointer-events: none;
     }
 
     .newsletter-header {
@@ -369,18 +434,22 @@
         align-items: center;
         gap: 1rem;
         margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
     }
 
     .newsletter-number {
         width: 40px;
         height: 40px;
-        background: var(--primary-red);
+        background: var(--primary-blue);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.1rem;
         font-weight: 900;
         flex-shrink: 0;
+        border-radius: 6px;
+        box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
     }
 
     .newsletter-title {
@@ -396,6 +465,8 @@
         align-items: center;
         justify-content: space-between;
         gap: 2rem;
+        position: relative;
+        z-index: 1;
     }
 
     .newsletter-description {
@@ -416,13 +487,14 @@
     .newsletter-input {
         flex: 1;
         padding: 0.95rem 1.5rem;
-        border: 2px solid rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(6, 182, 212, 0.2);
         background: rgba(255, 255, 255, 0.05);
         color: white;
         font-size: 0.9rem;
         font-weight: 600;
         outline: none;
         transition: all 0.3s ease;
+        border-radius: 6px;
     }
 
     .newsletter-input::placeholder {
@@ -431,15 +503,16 @@
     }
 
     .newsletter-input:focus {
-        border-color: var(--primary-red);
+        border-color: var(--primary-blue);
         background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
     }
 
     .newsletter-button {
         padding: 0.95rem 2rem;
-        background: var(--primary-red);
+        background: var(--primary-blue);
         color: white;
-        border: 2px solid var(--primary-red);
+        border: 2px solid var(--primary-blue);
         font-weight: 900;
         font-size: 0.85rem;
         letter-spacing: 1px;
@@ -448,12 +521,33 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        border-radius: 6px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .newsletter-button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--primary-blue-dark);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .newsletter-button span,
+    .newsletter-button svg {
+        position: relative;
+        z-index: 1;
+    }
+
+    .newsletter-button:hover::before {
+        transform: translateX(0);
     }
 
     .newsletter-button:hover {
-        background: transparent;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
     }
 
     .newsletter-button svg {
@@ -499,16 +593,33 @@
         font-weight: 700;
         letter-spacing: 1px;
         transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .footer-bottom-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-blue);
+        transition: width 0.3s ease;
     }
 
     .footer-bottom-link:hover {
-        color: var(--primary-red);
+        color: var(--primary-blue);
+    }
+
+    .footer-bottom-link:hover::after {
+        width: 100%;
     }
 
     .separator {
         width: 2px;
         height: 14px;
         background: #475569;
+        border-radius: 2px;
     }
 
     /* Responsive Design */
@@ -593,6 +704,32 @@
             align-items: flex-start;
             gap: 0.75rem;
         }
+
+        .contact-icon-wrapper {
+            width: 32px;
+            height: 32px;
+        }
+
+        .contact-icon {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    /* Animation for Newsletter Section */
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    .newsletter-number {
+        animation: pulse 2s ease-in-out infinite;
     }
 </style>
-</document_content>

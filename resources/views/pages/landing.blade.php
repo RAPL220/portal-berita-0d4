@@ -6,15 +6,15 @@
 
     <style>
         :root {
-            --primary-red: #E63946;
-            --primary-red-dark: #D62828;
-            --primary-red-light: #F77F00;
-            --accent-red: #FCBF49;
-            --dark-bg: #1D3557;
-            --text-dark: #14213D;
-            --text-gray: #6C757D;
-            --bg-light: #F1FAEE;
-            --border-light: #DEE2E6;
+            --primary-blue: #06B6D4;
+            --primary-blue-dark: #0891B2;
+            --primary-blue-light: #22D3EE;
+            --accent-blue: #67E8F9;
+            --dark-bg: #0F172A;
+            --text-dark: #1E293B;
+            --text-gray: #64748B;
+            --bg-light: #F8FAFC;
+            --border-light: #E2E8F0;
             --white: #FFFFFF;
         }
 
@@ -44,7 +44,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
             opacity: 0.9;
         }
 
@@ -61,7 +61,7 @@
             align-items: center;
             gap: 0.5rem;
             background: var(--white);
-            color: var(--primary-red);
+            color: var(--primary-blue);
             padding: 0.5rem 1.5rem;
             font-size: 0.75rem;
             font-weight: 900;
@@ -100,7 +100,7 @@
 
         .slide-category {
             display: inline-block;
-            background: var(--primary-red);
+            background: var(--primary-blue);
             color: white;
             padding: 0.4rem 1.2rem;
             font-size: 0.7rem;
@@ -141,6 +141,82 @@
             font-weight: 600;
         }
 
+
+        /* ================= FEATURE HEADLINE ================= */
+        .feature-section {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 2rem;
+        }
+
+        .feature-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            padding: 2rem;
+        }
+
+        .feature-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .feature-category {
+            background: var(--primary-blue);
+            color: white;
+            padding: .3rem 1rem;
+            font-size: .7rem;
+            font-weight: 900;
+            display: inline-block;
+            margin-bottom: 1rem
+        }
+
+        /* ================= GRID ================= */
+        .grid-cards-section {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .grid-cards-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .grid-card {
+            background: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .08);
+        }
+
+        .grid-card img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .grid-card-content {
+            padding: 1rem;
+            font-weight: 800;
+        }
+
         /* ==================== GRID CARDS SECTION ==================== */
         .grid-cards-section {
             max-width: 1400px;
@@ -165,12 +241,12 @@
             color: inherit;
             display: flex;
             flex-direction: column;
-            border-top: 4px solid var(--primary-red);
+            border-top: 4px solid var(--primary-blue);
         }
 
         .grid-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(230, 57, 70, 0.3);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.3);
         }
 
         .grid-card-image-wrapper {
@@ -195,7 +271,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background: var(--primary-red);
+            background: var(--primary-blue);
             color: white;
             padding: 0.4rem 1rem;
             font-size: 0.65rem;
@@ -257,7 +333,7 @@
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid var(--primary-red);
+            border-left: 5px solid var(--primary-blue);
         }
 
         .section-title-wrapper {
@@ -269,7 +345,7 @@
         .section-number {
             width: 40px;
             height: 40px;
-            background: var(--primary-red);
+            background: var(--primary-blue);
             color: white;
             display: flex;
             align-items: center;
@@ -288,7 +364,7 @@
         }
 
         .btn-view-all {
-            background: var(--primary-red);
+            background: var(--primary-blue);
             color: white;
             padding: 0.6rem 1.5rem;
             text-decoration: none;
@@ -297,12 +373,12 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: 2px solid var(--primary-red);
+            border: 2px solid var(--primary-blue);
         }
 
         .btn-view-all:hover {
             background: transparent;
-            color: var(--primary-red);
+            color: var(--primary-blue);
         }
 
         /* ==================== NEWS LIST ==================== */
@@ -325,8 +401,8 @@
         }
 
         .news-box:hover {
-            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.25);
-            border-left-color: var(--primary-red);
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.25);
+            border-left-color: var(--primary-blue);
             transform: translateX(5px);
         }
 
@@ -364,7 +440,7 @@
         }
 
         .news-box-category {
-            background: var(--primary-red);
+            background: var(--primary-blue);
             color: white;
             padding: 0.3rem 0.9rem;
             font-size: 0.65rem;
@@ -422,7 +498,7 @@
         .sidebar-box-icon {
             width: 32px;
             height: 32px;
-            background: var(--primary-red);
+            background: var(--primary-blue);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -511,12 +587,12 @@
             color: inherit;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            border-top: 6px solid var(--primary-red);
+            border-top: 6px solid var(--primary-blue);
         }
 
         .popular-main-box:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(230, 57, 70, 0.25);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.25);
         }
 
         .popular-main-image {
@@ -535,7 +611,7 @@
         }
 
         .popular-main-category {
-            background: var(--primary-red);
+            background: var(--primary-blue);
             color: white;
             padding: 0.4rem 1.2rem;
             font-size: 0.7rem;
@@ -584,8 +660,8 @@
         }
 
         .popular-side-box:hover {
-            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.25);
-            border-left-color: var(--primary-red);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.25);
+            border-left-color: var(--primary-blue);
             transform: translateX(5px);
         }
 
@@ -805,7 +881,7 @@
 
         .swiper-pagination-bullet-active {
             opacity: 1;
-            background: var(--primary-red);
+            background: var(--primary-blue);
             width: 30px;
         }
     </style>
@@ -838,6 +914,25 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <!-- FEATURE HEADLINE -->
+    <section class="feature-section">
+        <div class="feature-grid">
+            @foreach ($featureds->take(2) as $featured)
+                <a href="{{ route('news.show', $featured->slug) }}" class="feature-card">
+                    <img src="{{ asset('storage/' . $featured->thumbnail) }}">
+                    <div class="feature-content">
+                        <span class="feature-category">{{ $featured->category->title }}</span>
+                        <h2 class="feature-title">{{ $featured->title }}</h2>
+                        <p>{{ Str::limit(strip_tags($featured->content), 150) }}</p>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </section>
 
     <!-- Grid Cards Section (Top 4 News) -->
     <section class="grid-cards-section">
