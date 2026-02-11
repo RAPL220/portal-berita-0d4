@@ -135,7 +135,7 @@
         <!-- Footer Bottom -->
         <div class="footer-bottom">
             <div class="footer-bottom-content">
-                <p class="copyright">&copy; {{ date('Y') }} FOKUS KITO. ALL RIGHTS RESERVED.</p>
+                <p class="copyright">&copy; {{ date('Y') }} Kabar Utamo. ALL RIGHTS RESERVED.</p>
                 <div class="footer-bottom-links">
                     <a href="#" class="footer-bottom-link">PRIVACY POLICY</a>
                     <span class="separator"></span>
