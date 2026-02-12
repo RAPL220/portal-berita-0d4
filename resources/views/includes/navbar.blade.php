@@ -8,7 +8,7 @@
             <div class="logo-wrapper-nav">
                 <a href="{{ route('landing') }}" class="logo-link">
                     <div class="logo-container">
-                        <img id="logo_navbar" src="{{ asset('/asset/img/logo.png') }}" alt="logo">
+                        <img id="logo_navbar" src="{{ asset('/asset/img/Kabar_Utamo.png') }}" alt="logo">
                     </div>
                 </a>
 
@@ -157,18 +157,18 @@
     }
 
     /* Nav Container */
-    .nav-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 2rem;
+    .logo-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
 
     .nav-content {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 0;
-        gap: 2rem;
+        height: 72px;
+        padding: 20px;
     }
 
     /* Logo Section */
@@ -197,7 +197,7 @@
     }
 
     #logo_navbar {
-        height: 42px;
+        height: 80px;
         width: auto;
         display: block;
         transition: transform 0.3s ease;
